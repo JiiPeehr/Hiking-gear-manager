@@ -6,6 +6,8 @@ class App(tk.Tk):
         super().__init__()
         self.title("Hiking Gear Manager")
         self.geometry("1400x550")
+        self.base_inventory = cl.BaseInventory()
+        self.packed_inventory = cl.PackedInventory()
 
         # Main header
         self.label = tk.Label(self, text="Enter the gear info:")
@@ -67,6 +69,16 @@ class App(tk.Tk):
         self.total_display_label = tk.Label(self, text="Total items: 0, Total weight: 0g")
         self.total_display_label.grid(row=8, column=8, columnspan=14, pady=(10, 0))
 
+        # Save base inventory button
+        self.save_base_inventory_button = tk.Button(self, text="Save base inventory", command=self.save_base_inventory)
+        self.save_base_inventory_button.grid(row=9, column=0, columnspan=2, pady=(10, 0), padx=(20, 20))
+
+        # Save packed items button
+        self.save_packed_items_button = tk.Button(self, text="Save packed items", command=self.save_packed_items_inventory)
+        self.save_packed_items_button.grid(row=9, column=7, columnspan=2, pady=(10, 0))
+
+        self.start()
+
 
     """Widget functions"""
 
@@ -116,47 +128,54 @@ class App(tk.Tk):
     """functions to run at the start of the app"""
 
     # function to load items to base inventory display
-    def load_base_inventory_display(self, base_inventory: cl.BaseInventory):
-        for item in base_inventory.get_items():
+    def load_base_inventory_display(self):
+        for item in self.base_inventory.get_items():
             self.base_inventory_listbox.insert(tk.END, item)
+        self.base_inventory.remove_all_items()
+        
 
     # funktion to load items to packed items display
-    def load_packed_items_inventory_display(self, packed_inventory: cl.PackedInventory):
-        for item in packed_inventory.get_items():
+    def load_packed_items_inventory_display(self):
+        for item in self.packed_inventory.get_items():
             self.packed_items_listbox.insert(tk.END, item)
+        self.packed_inventory.remove_all_items()
+        
 
     def start(self):
-        base_inventory: cl.BaseInventory = cl.BaseInventory()
-        packed_inventory: cl.PackedInventory = cl.PackedInventory()
-        self.load_base_inventory_display(base_inventory)
-        self.load_packed_items_inventory_display(packed_inventory)
+        self.load_base_inventory_display()
+        self.load_packed_items_inventory_display()
+        
 
     """functions to run at the end of the app"""
+    
 
     # function to save base inventory items to list -> save to file
     def save_base_inventory(self):
-        items = []
         for i in range(self.base_inventory_listbox.size()):
-            item_str = self.base_inventory_listbox.get(i)
+            item_str: str = self.base_inventory_listbox.get(i)
             name, category, weight = item_str.split(",")
-            item = cl.Item(name, category, weight)
-            items.append(item)
-        cl.BaseInventory.save_file(items)
+            item = cl.Item(name, category, weight[:-1])
+            self.base_inventory.add_item(item)
+        self.base_inventory.save_file(self.base_inventory.get_items()) # voiko tänne lisätä saman itemin?
+        self.base_inventory.remove_all_items()
+        
 
     # function to save packed items to list -> save to file
     def save_packed_items_inventory(self):
-        items = []
         for i in range(self.packed_items_listbox.size()):
             item_str: str = self.packed_items_listbox.get(i)
             name, category, weight = item_str.split(",")
-            item = cl.Item(name, category, weight)
-            items.append(item)
-        cl.PackedInventory.save_file(items)
+            item = cl.Item(name, category, weight[:-1])
+            self.packed_inventory.add_item(item)
+        self.packed_inventory.save_file(self.packed_inventory.get_items())
+        self.packed_inventory.remove_all_items()
 
 
-        # voiko ikkunan sulkemisen yhteydessä ajaa tallennusfunktiot?
-        # toteuta nykyisellään, mutta harjoittele brachingia ja testaa käyttää inventory-olioiden add, remove, pack ja unpack metodeja
+        
+        
         # lisää myös syötteiden tarvittava tarkistus
+        # lisää myös total painon ja itemien määrän päivitys
+        # inventoryn tallennuksessa lista pitäisi tallentua sellaisena kuin se on listboxissa. Jos item poistettu listboxista, pitäisi se poistaa myös inventoryn itemeistä
 
     
 

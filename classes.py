@@ -1,16 +1,16 @@
 # classes
 
 class Item:
-    def __init__(self, name, category, weight):
+    def __init__(self, name: str, category: str, weight: str):
         self.name = name
         self.category = category
         self.weight = weight
 
     def __str__(self):
-        return f"{self.name} ({self.category}), {self.weight}g"
+        return f"{self.name}, {self.category}, {self.weight}g"
     
     def __repr__(self):
-        return f"{self.name} ({self.category}), {self.weight}g"
+        return f"{self.name}, {self.category}, {self.weight}g"
     
     def __eq__(self, other):
         return self.name == other.name and self.category == other.category and self.weight == other.weight
@@ -46,7 +46,7 @@ class Item:
         self._weight = value
 
 class BaseInventory:
-    def __init__(self, items=None):
+    def __init__(self, items: list[Item]=None):
         if items is None:
             self.items = self.load_file()
         else:
@@ -59,7 +59,7 @@ class BaseInventory:
             with open("baseitems.txt", "r") as file:
                 for line in file:
                     name, category, weight = line.strip().split(",")
-                    item = Item(name, category, int(weight))
+                    item = Item(name, category, weight)
                     items.append(item)
         except FileNotFoundError:
             pass
@@ -78,6 +78,9 @@ class BaseInventory:
     
     def remove_item(self, item):
         self.items.remove(item)
+
+    def remove_all_items(self):
+        self.items.clear()
     
     def __str__(self):
         return "\n".join([str(item) for item in self.items])
@@ -104,7 +107,7 @@ class PackedInventory(BaseInventory):
             with open("packeditems.txt", "r") as file:
                 for line in file:
                     name, category, weight = line.strip().split(",")
-                    item = Item(name, category, int(weight))
+                    item = Item(name, category, weight)
                     items.append(item)
         except FileNotFoundError:
             pass
