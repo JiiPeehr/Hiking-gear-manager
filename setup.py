@@ -1,15 +1,14 @@
-from setuptools import setup
+import PyInstaller.__main__
 
-APP = ['hiking_mear_manager.py']
-DATA_FILES = []
-OPTIONS = {
-    'argv_emulation': True,
-    'packages': ['tkinter', 'classes'],
-}
-
-setup(
-    app=APP,
-    data_files=DATA_FILES,
-    options={'py2app': OPTIONS},
-    setup_requires=['py2app'],
-)
+PyInstaller.__main__.run([
+    
+    'hiking_gear_manager.py',
+    '--windowed',
+    '--noconsole',
+    #'--icon=icon.ico' find an icon for the app
+    
+    
+    
+    
+    
+])
