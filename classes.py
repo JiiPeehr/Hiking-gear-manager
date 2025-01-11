@@ -1,5 +1,7 @@
 # classes
 
+import os
+
 class Item:
     def __init__(self, name: str, category: str, weight: str):
         self.name = name
@@ -55,8 +57,10 @@ class BaseInventory:
 
     def load_file(self):
         items = []
+        base_dir = os.path.dirname(__file__)
+        file_path = os.path.join(base_dir, 'baseitems.txt')
         try:
-            with open("baseitems.txt", "r") as file:
+            with open(file_path, "r") as file:
                 for line in file:
                     name, category, weight = line.strip().split(",")
                     item = Item(name, category, weight)
@@ -64,9 +68,11 @@ class BaseInventory:
         except FileNotFoundError:
             pass
         return items
-    
+
     def save_file(self, items: list[Item]):
-        with open("baseitems.txt", "w") as file:
+        base_dir = os.path.dirname(__file__)
+        file_path = os.path.join(base_dir, 'baseitems.txt')
+        with open(file_path, "w") as file:
             for item in items:
                 file.write(f"{item.name},{item.category},{item.weight}\n")
 
@@ -103,8 +109,10 @@ class PackedInventory(BaseInventory):
 
     def load_file(self):
         items = []
+        base_dir = os.path.dirname(__file__)
+        file_path = os.path.join(base_dir, 'packeditems.txt')
         try:
-            with open("packeditems.txt", "r") as file:
+            with open(file_path, "r") as file:
                 for line in file:
                     name, category, weight = line.strip().split(",")
                     item = Item(name, category, weight)
@@ -114,7 +122,9 @@ class PackedInventory(BaseInventory):
         return items
     
     def save_file(self, items: list[Item]):
-        with open("packeditems.txt", "w") as file:
+        base_dir = os.path.dirname(__file__)
+        file_path = os.path.join(base_dir, 'packeditems.txt')
+        with open(file_path, "w") as file:
             for item in items:
                 file.write(f"{item.name},{item.category},{item.weight}\n")
     

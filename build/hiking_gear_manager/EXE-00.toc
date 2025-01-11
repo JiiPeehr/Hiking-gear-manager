@@ -1,0 +1,70 @@
+('/Users/jpruuska/GitHub-projektit/Hiking gear '
+ 'manager/build/hiking_gear_manager/hiking_gear_manager',
+ False,
+ False,
+ True,
+ ['/Users/jpruuska/GitHub-projektit/Hiking gear '
+  'manager/HikingGearManager.icns'],
+ None,
+ False,
+ False,
+ None,
+ True,
+ False,
+ 'arm64',
+ None,
+ None,
+ '/Users/jpruuska/GitHub-projektit/Hiking gear '
+ 'manager/build/hiking_gear_manager/hiking_gear_manager.pkg',
+ [('pyi-contents-directory _internal', '', 'OPTION'),
+  ('PYZ-00.pyz',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/build/hiking_gear_manager/PYZ-00.pyz',
+   'PYZ'),
+  ('lib-dynload/_struct.cpython-311-darwin.so',
+   '/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload/_struct.cpython-311-darwin.so',
+   'EXTENSION'),
+  ('lib-dynload/zlib.cpython-311-darwin.so',
+   '/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload/zlib.cpython-311-darwin.so',
+   'EXTENSION'),
+  ('struct',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/build/hiking_gear_manager/localpycs/struct.pyc',
+   'PYMODULE'),
+  ('pyimod01_archive',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/build/hiking_gear_manager/localpycs/pyimod01_archive.pyc',
+   'PYMODULE'),
+  ('pyimod02_importers',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/build/hiking_gear_manager/localpycs/pyimod02_importers.pyc',
+   'PYMODULE'),
+  ('pyimod03_ctypes',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/build/hiking_gear_manager/localpycs/pyimod03_ctypes.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/.venv/lib/python3.11/site-packages/PyInstaller/loader/pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/.venv/lib/python3.11/site-packages/PyInstaller/hooks/rthooks/pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth__tkinter',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/.venv/lib/python3.11/site-packages/PyInstaller/hooks/rthooks/pyi_rth__tkinter.py',
+   'PYSOURCE'),
+  ('hiking_gear_manager',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/hiking_gear_manager.py',
+   'PYSOURCE')],
+ [],
+ False,
+ False,
+ 1736601945,
+ [('runw',
+   '/Users/jpruuska/GitHub-projektit/Hiking gear '
+   'manager/.venv/lib/python3.11/site-packages/PyInstaller/bootloader/Darwin-64bit/runw',
+   'EXECUTABLE')],
+ '/Library/Frameworks/Python.framework/Versions/3.11/Python')

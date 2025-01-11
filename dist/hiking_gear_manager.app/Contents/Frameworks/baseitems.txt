@@ -1,0 +1,2 @@
+testi, kategoria, 870
+testi2, kategoria2, 210

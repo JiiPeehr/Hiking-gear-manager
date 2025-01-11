@@ -7,5 +7,4 @@ PyInstaller.__main__.run([
     '--noconsole',
     '--icon=HikingGearManager.icns',
      
-    
 ])

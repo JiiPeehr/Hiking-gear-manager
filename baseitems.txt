@@ -1,2 +1,0 @@
-tuote1, kategoria1, 850
-tuote2, kategoria2, 740
